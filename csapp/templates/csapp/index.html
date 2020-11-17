@@ -1,0 +1,9 @@
+{% extends "csapp/base.html" %}
+{% block content %}
+<ul>To do list
+	{% for i in to_do %}
+	<li>{{ i }}</li>
+	{% endfor %}
+	<li><a href="{% url 'csapp:form_ask' %}">Add to-do</a></li>
+</ul>
+{% endblock %}
