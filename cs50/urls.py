@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('mytasks/',include('csapp.urls')),
+    path('todo/',include('csapp.urls')),
 ]
