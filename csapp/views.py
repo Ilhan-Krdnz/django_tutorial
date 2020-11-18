@@ -26,7 +26,7 @@ def form_ask(request):
         #clean_data wont work before running is_valid()!!
         if myform.is_valid():
             duty_name = myform.cleaned_data["your_duty"]
-            request.session['to_do'].append(duty_name)
+            request.session['to_do'] += ['tudy_name'] 
             return HttpResponseRedirect(reverse("csapp:index"))
     else:
         myform = DutyForm()
