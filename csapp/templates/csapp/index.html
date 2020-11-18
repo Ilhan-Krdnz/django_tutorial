@@ -2,9 +2,13 @@
 {% block content %}
 <ul>
 	<h1>To do list</h1>
+	{{ to_do }}
 	{% for i in to_do %}
 	<li>{{ i }}</li>
+	{% empty %}
 	{% endfor %}
-	<a href="{% url 'csapp:form_ask' %}">Add to-do</a>
+	<button><a href="{% url 'csapp:form_ask' %}">Add to-do</a></button>
+	
+	<button><a href="{% url 'csapp:form_delete' %}">Delete</a></button>
 </ul>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "csapp/base.html" %}
 
 {% block content %}
-<form action="{% url 'csapp:form_ask' %}" method="post">Add task
+<form action="{% url 'csapp:form_delete' %}" method="post">Delete task
 	{% csrf_token %}
     {{ myform }}
     <input type="submit" value="submit">
