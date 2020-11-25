@@ -1,13 +1,17 @@
 {% extends "csapp/base.html" %}
 {% block content %}
-<ul>
-	<h1>To do list</h1>
-	{% for i in to_do %}
-	<li>{{ i }}</li>
-	{% empty %}
-	{% endfor %}
-	<button><a href="{% url 'csapp:form_ask' %}">Add to-do</a></button>
+<div id="container">
+	<h1>To-Do List <i class="fa fa-plus"></i></h1>
+	<ul>
+		{% for i in to_do %}
+		<li><span><i class="fa fa-trash"></i></span>{{ i }}</li>
+		{% empty %}
+		<h2>No task</h2>
+		{% endfor %}
+		<button><a href="{% url 'csapp:form_ask' %}">Add to-do</a></button>
+		<button><a href="{% url 'csapp:form_delete' %}">Delete</a></button>
+	</ul>
 	
-	<button><a href="{% url 'csapp:form_delete' %}">Delete</a></button>
-</ul>
+</div>
+
 {% endblock %}

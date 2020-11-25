@@ -3,15 +3,16 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.http import HttpResponse
 from django import forms
+from .models import MyTasks
 
 #This is global variable and it can be approached by everybody
 #to_do = ['study german','programming','courses','talking']
 
 class DutyForm(forms.Form):
-    your_duty = forms.CharField(label='Your duty', max_length=100)
+    your_duty = forms.CharField(label='Add Duty', max_length=100)
 
 class DeleteForm(forms.Form):
-    duty_cancel = forms.CharField(label='cancelled duty', max_length=100)
+    duty_cancel = forms.CharField(label='Remove Duty', max_length=100)
 
 def index(request):
     if 'to_do' not in request.session:
@@ -27,11 +28,10 @@ def form_ask(request):
         myform = DutyForm(request.POST)
         #clean_data wont work before running is_valid()!!
         if myform.is_valid():
+            dbtask1 = MyTasks()
             request.session.modified = True
-            #mylist = []
-            duty_name = myform.cleaned_data["your_duty"]
-            #mylist.append(duty_name)
-            request.session['to_do'].append(duty_name) 
+            dbtask1.task_name = myform.cleaned_data["your_duty"]
+            request.session['to_do'].append(dbtask1) 
             return HttpResponseRedirect(reverse("csapp:index"))
     else:
         myform = DutyForm()
